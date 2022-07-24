@@ -1,6 +1,6 @@
-# Template Repo
+# Power Plant
 
-#### This is a Template for a web environment
+#### An exercise for Functional Programming with JavaScript
 
 #### By Rosie Gardner
 
