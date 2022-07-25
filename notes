@@ -1,0 +1,84 @@
+// (plant) is the object that is being passed in as the argument **
+// const hydrate = (plant) => {  // creating a function literal (a specific action (hydrate)) that takes (planet) as the argument. - it will NOT mutate state.
+// return {
+//  ...plant,  // spread() operator to return new state of the plant.
+//  water: (plant.water || 0) + 1  // using || 'or' operator - if an object doesn't conatin a 'water' property, then 'plant.water' will equal 'NaN'. - Default value of zero '0' if no 'water proptery'.
+// }
+// }; 
+
+// const feed = (plant) => {
+//   return {
+//     ...plant,
+//     soil: (plant.soil || 0) + 1
+//   }
+// };
+
+// This function pretty much looks the same as the previous one.
+// Also, it doesn't seem very reusable. 
+// It can only take an object that has a soil property and then 
+// increment that soil property by 1. 
+// Because the methods look so similar, 
+// we clearly have a chance to refactor here.
+
+// Remember that functional programming is an attempt 
+// to make our code more abstract and reusable.
+// This is in contrast to object-oriented programming, 
+// which is often about making our code more concrete and encapsulated.
+
+// So how can we refactor this method to 
+// take in alter soil, water, or light? 
+// We could do the following:
+
+// const changePlantState = (plant, property) => { // passing in both plant and the property we want changed
+//  return {
+//    ...plant, // returns new plant object
+//    [property]: (plant[property] || 0) + 1 // square brackets denote property is being added to plant as a new property of it
+//  }
+//}
+
+// Now we are passing in both a (plant) and the specific [property] 
+// that we want to change. 
+
+// Note that we can use square brackets to pass the value of 
+// a variable into an object key or property.  
+// This is a piece of functionality from ES6.
+
+// While this is a good first step in terms of refactoring, 
+// we can do more to make this function reusable and flexible. 
+// Here's how our function is still limited:
+
+// 1 ) It's still specific to plants when we could technically use it
+//   to increment any property of any object by 1. 
+//   We can rename the variables to be more abstract.
+
+// 2 ) Why should we limit ourselves to just incrementing a 
+//  plant property by 1? If we were going to turn this 
+//  into a game, we'd probably want ways to increment (or decrement) 
+//  different properties in different ways. 
+//  Our function would be much more flexible if it could do this.
+
+// 3 ) Finally, this function takes multiple arguments, 
+//  so it might be nice to turn this into an unary function with 
+//  just one argument. 
+
+// (Hint: we will need to curry our function to do this.)
+
+// Let's handle this one step at a time.
+
+// First, we'll make our variables more abstract:
+
+// const changeState = (state, prop, value) => ({
+//   ...state,
+//   [prop]: (state[prop] || 0) + value
+// })
+
+// console.log("this is not functional");
+
+// const changeState = (prop) => {
+//   return (value) => {
+//     return (state) => ({
+//       ...state,
+//       [prop] : (state[prop] || 0) + value
+//     })
+//   }
+// }
