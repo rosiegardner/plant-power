@@ -19,7 +19,7 @@ const changeState = (prop) => {
   }
 }
 
-// function for storing state
+// function for storing state - WIP
 const storeState = () => { // outer function is stored in the constant & will store the 'currentState' of an 'object'- it does not take an argument.
   let currentState = {}; // of an object will be initialized as a {hash} - we use 'let' because it will be mutated each time the inner function is called.
   return (stateChangeFunction) => {
